@@ -1,0 +1,18 @@
+{{extend 'layout.html'}}
+
+<h1>{{=category.name.title()}}</h1>
+
+{{for post in rows:}}
+<div class = "well">
+     <span class="votes">{{=post.votes}}</span> {{=A(post.title,_href=URL('view_posts',args=post.id))}}
+<!--     <a href="{{=URL('view_posts',args=post.id)}}">{{=post.title}}</a> -->
+</div>
+{{pass}}
+
+{{if page>0:}}
+{{=A('previous',_class='btn')}}
+{{pass}}
+
+{{if len(rows)>5:}}
+{{=A('next',_class='btn')}}
+{{pass}}
